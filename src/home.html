@@ -1,0 +1,369 @@
+<title>Cal Escue</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Cal Escue: Cloud and AI strategy, hyperscaler partnerships, and cloud economics. Ex-Dropbox. Mental health angel investor.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Instrument+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: one calm column. Each section is a two-column row: a narrow label rail on the
+   left (section name), content on the right. Stacks to one column on phones.
+   Each section is self-contained so it can later move to its own page. */
+:root {
+  --bg: #f5f8fc;          /* blue-tinted paper */
+  --surface: #ffffff;
+  --tint: #e4eefa;        /* pale sky wash */
+  --ink: #0f2540;         /* deep navy text */
+  --muted: #51667f;
+  --line: #cfdcec;
+  --accent: #1f5fbf;      /* confident mid blue */
+  --accent-ink: #ffffff;
+  --accent-soft: #3d7fd9;
+  --display: "Newsreader", Georgia, "Times New Roman", serif;
+  --body: "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --wrap: 68rem;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0b1626; --surface: #111f34; --tint: #16294a; --ink: #e8f0fb; --muted: #9fb3cc;
+    --line: #243a5a; --accent: #7fb2f5; --accent-ink: #0b1626; --accent-soft: #a7cbf8;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0b1626; --surface: #111f34; --tint: #16294a; --ink: #e8f0fb; --muted: #9fb3cc;
+  --line: #243a5a; --accent: #7fb2f5; --accent-ink: #0b1626; --accent-soft: #a7cbf8;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font-family: var(--body); font-size: 1.0625rem; line-height: 1.65;
+}
+body::before {
+  content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px);
+  z-index: 10; background: var(--bg);
+}
+.wrap {
+  max-width: var(--wrap); margin-inline: auto;
+  padding-left: max(20px, env(safe-area-inset-left, 0px));
+  padding-right: max(20px, env(safe-area-inset-right, 0px));
+}
+a { color: var(--accent); text-underline-offset: 0.2em; }
+a:focus-visible, .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+h1, h2, h3 { font-family: var(--display); font-weight: 500; text-wrap: balance; margin: 0; }
+p { margin: 0; max-width: 62ch; }
+
+/* Header */
+.site-header {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 9;
+  background: var(--bg); border-bottom: 1px solid var(--line);
+}
+.site-header .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.25rem 1.5rem; padding-block: 0.8rem; }
+.brand { font-family: var(--display); font-size: 1.3rem; color: var(--ink); text-decoration: none; }
+.nav { display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; font-size: 0.95rem; }
+.nav a { color: var(--muted); text-decoration: none; padding-block: 0.2rem; }
+.nav a:hover { color: var(--accent); }
+
+/* Hero */
+.hero { background: var(--tint); border-bottom: 1px solid var(--line); }
+.hero .wrap { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2.5rem; align-items: center; padding-block: clamp(3rem, 8vw, 5.5rem); }
+.hero h1 { font-size: clamp(2.6rem, 7vw, 4.4rem); line-height: 1.05; letter-spacing: -0.01em; }
+.hero h1 em { color: var(--accent); }
+.hero .lede { font-size: 1.2rem; color: var(--muted); margin-top: 1.25rem; max-width: 50ch; }
+.actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2rem; }
+.btn {
+  display: inline-block; padding: 0.7rem 1.25rem; border-radius: 999px; font-weight: 600;
+  font-size: 0.98rem; text-decoration: none; border: 1.5px solid var(--accent);
+}
+.btn.primary { background: var(--accent); color: var(--accent-ink); }
+.btn.primary:hover { background: var(--accent-soft); border-color: var(--accent-soft); }
+.btn.ghost { color: var(--accent); }
+.btn.ghost:hover { background: var(--surface); }
+.portrait {
+  width: clamp(9rem, 22vw, 14rem); aspect-ratio: 4 / 5; max-width: 100%; object-fit: cover;
+  border-radius: 7rem 7rem 1rem 1rem; background: var(--accent); color: var(--accent-ink);
+  display: grid; place-items: center; font-family: var(--display); font-size: clamp(2.5rem, 6vw, 4rem);
+}
+
+/* Sections */
+.section { border-bottom: 1px solid var(--line); }
+.section .wrap { display: grid; grid-template-columns: 13rem minmax(0, 1fr); gap: 1.5rem 3rem; padding-block: clamp(2.75rem, 6vw, 4.5rem); }
+.section h2 { font-size: 1.9rem; line-height: 1.15; }
+.section .rail p { color: var(--muted); font-size: 0.95rem; margin-top: 0.5rem; }
+.stack { display: grid; gap: 1.1rem; min-width: 0; }
+.plain { margin: 0; padding-left: 1.1rem; display: grid; gap: 0.35rem; max-width: 62ch; }
+
+/* Experience and education entries: dates left, details right */
+.entries { display: grid; gap: 0; min-width: 0; }
+.entry { display: grid; grid-template-columns: 9.5rem minmax(0, 1fr); gap: 0.25rem 1.5rem; padding-block: 1.4rem; border-top: 1px solid var(--line); }
+.entry:first-child { border-top: 0; padding-top: 0; }
+.entry .when { color: var(--muted); font-size: 0.92rem; font-variant-numeric: tabular-nums; padding-top: 0.3rem; }
+.entry h3 { font-size: 1.3rem; }
+.entry .org { font-weight: 600; color: var(--accent); margin-top: 0.1rem; }
+.entry ul { margin: 0.6rem 0 0; padding-left: 1.1rem; display: grid; gap: 0.35rem; max-width: 62ch; }
+.entry p { margin-top: 0.5rem; }
+
+/* Cards: finance focus areas and causes */
+.areas { display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); gap: 1rem; }
+.area { background: var(--surface); border: 1px solid var(--line); border-radius: 0.9rem; padding: 1.2rem 1.25rem; }
+.area h3 { font-size: 1.15rem; margin-bottom: 0.35rem; }
+.area p { font-size: 0.97rem; color: var(--muted); }
+.area .where { font-size: 0.85rem; color: var(--accent); font-weight: 600; margin-bottom: 0.2rem; }
+
+/* Contact */
+.contact { background: var(--tint); border-bottom: 0; }
+.contact-list { display: grid; gap: 0.6rem; margin: 0; }
+.contact-list div { display: flex; flex-wrap: wrap; gap: 0.25rem 1rem; }
+.contact-list dt { width: 5.5rem; color: var(--muted); }
+.contact-list dd { margin: 0; user-select: all; overflow-wrap: anywhere; min-width: 0; }
+
+footer .wrap { padding-block: 1.5rem; color: var(--muted); font-size: 0.9rem; }
+
+@media (max-width: 760px) {
+  .section .wrap { grid-template-columns: minmax(0, 1fr); gap: 1.25rem; }
+  .hero .wrap { grid-template-columns: minmax(0, 1fr); }
+  .portrait { order: -1; width: 7.5rem; }
+  .entry { grid-template-columns: minmax(0, 1fr); }
+}
+</style>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="#top">Cal Escue</a>
+    <!-- When a section becomes its own page, point its link at the new file,
+         e.g. href="finance.html", href="giving.html", href="education.html". -->
+    <nav class="nav" aria-label="Main">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#finance">Finance</a>
+      <a href="#education">Education</a>
+      <a href="#giving">Giving back</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <h1>Hi, I'm Cal.<br><em>Glad you're here.</em></h1>
+        <p class="lede">I work where cloud and AI strategy meets vendor economics and partnerships. Today I lead Cloud &amp; AI Strategy at Panduit. Before that I ran hyperscaler partnerships at Dropbox, and I invest in mental health startups.</p>
+        <div class="actions">
+          <a class="btn primary" href="#contact">Get in touch</a>
+          <a class="btn ghost" href="https://www.linkedin.com/in/calescue" target="_blank" rel="noopener">View LinkedIn</a>
+        </div>
+      </div>
+      <!-- Swap this block for <img class="portrait" src="images/cal.jpg" alt="Cal Escue"> when you have a photo. -->
+      <div class="portrait" aria-hidden="true">CE</div>
+    </div>
+  </section>
+
+  <section class="section" id="about">
+    <div class="wrap">
+      <div class="rail"><h2>About</h2></div>
+      <div class="stack">
+        <p>I help organizations make better technology decisions across cost, risk, and growth. My background spans commercial strategy, go-to-market alliances, strategic sourcing, and cloud governance. I have led major AI vendor and cloud spend, negotiated strategic commercial arrangements, and supported measurable improvements in revenue and executive roadmaps.</p>
+        <p>I'm comfortable talking cloud architecture and governance, and I know how to translate those decisions into P&amp;L impact, vendor strategy, and business outcomes. That comes from starting my career on a trading floor and moving into technology from the finance side.</p>
+        <p>Outside of work I co-founded E|Motion Ventures, which backs companies improving access to mental health care, and I mentor and support children's causes. I speak English and French, with working German.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="experience">
+    <div class="wrap">
+      <div class="rail"><h2>Experience</h2><p>Most recent first.</p></div>
+      <div class="entries">
+        <article class="entry">
+          <div class="when">2024 to present</div>
+          <div>
+            <h3>Cloud &amp; AI Strategy, Enterprise Cloud &amp; AI Architecture</h3>
+            <div class="org">Panduit</div>
+            <ul>
+              <li>Direct enterprise cloud strategy and adoption across the CIO organization, founding a Cloud Center of Excellence and setting cloud-native architecture standards.</li>
+              <li>Lead agentic AI adoption with the AI Strategy team and IT: best practices, proofs of concept, and use cases.</li>
+              <li>Wrote Panduit's Cloud Management Strategy with its reference architecture and design.</li>
+              <li>Oversee global cloud spend, design, and performance optimization, and lead hyperscaler relationships across AWS, Azure, and OCI.</li>
+            </ul>
+          </div>
+        </article>
+        <article class="entry">
+          <div class="when">2021 to present</div>
+          <div>
+            <h3>Co-Founder</h3>
+            <div class="org">E|Motion Ventures</div>
+            <p>An early-stage venture, seed, and advisory firm dedicated to improving, building, and promoting community within mental health.</p>
+          </div>
+        </article>
+        <article class="entry">
+          <div class="when">2023 to 2024</div>
+          <div>
+            <h3>Senior Manager, Hyperscaler Partnerships, Cloud &amp; AI Commercial Strategy</h3>
+            <div class="org">Dropbox</div>
+            <ul>
+              <li>Directed enterprise-wide cloud sourcing from vendor selection through contract negotiation, covering nine-figure OpEx spend.</li>
+              <li>Managed all multi-year contracts for AWS, Azure, GCP, and Oracle, securing eight-figure savings.</li>
+              <li>Partnered with go-to-market teams to launch Dropbox on AWS Marketplace, generating seven-figure revenue in the first 12 months.</li>
+              <li>Received the Cultural and Community Leader Award from the Executive Leadership Team.</li>
+            </ul>
+          </div>
+        </article>
+        <article class="entry">
+          <div class="when">2021 to 2023</div>
+          <div>
+            <h3>Manager, Hyperscaler Partnerships, Cloud &amp; AI Commercial Strategy</h3>
+            <div class="org">Dropbox</div>
+            <ul>
+              <li>Led contract negotiations, sourcing, and adoption for all cloud infrastructure, services, and software.</li>
+              <li>Renegotiated AWS S3 storage agreements, securing seven-figure cost savings.</li>
+            </ul>
+          </div>
+        </article>
+        <article class="entry">
+          <div class="when">2019 to 2021</div>
+          <div>
+            <h3>Director of Sales, Software Consulting, AI, Data, Cloud Hyperscalers</h3>
+            <div class="org">Akvelon, San Francisco Bay Area</div>
+            <ul>
+              <li>Directed consulting technical engagements, responsible for nine figures in revenue.</li>
+              <li>Grew the revenue base through multiple seven-figure new clients.</li>
+              <li>Expanded relationships and staffed engagements with Reddit, DoorDash, Dropbox, Pinterest, Airbnb, and others.</li>
+            </ul>
+          </div>
+        </article>
+        <article class="entry">
+          <div class="when">2015 to 2019</div>
+          <div>
+            <h3>Head of Sales &amp; Business Development, GTM, FinOps</h3>
+            <div class="org">Fintech and technology startup, San Francisco</div>
+            <ul>
+              <li>Defined and executed go-to-market strategy, achieving double-digit monthly active user growth.</li>
+              <li>Built pricing and unit economics models that informed fundraising decks and GTM strategy.</li>
+              <li>Forged partnerships with banks, payment processors, and cloud service providers.</li>
+            </ul>
+          </div>
+        </article>
+        <article class="entry">
+          <div class="when">2013 to 2015</div>
+          <div>
+            <h3>Investment Analyst</h3>
+            <div class="org">PMC Treasury, New York</div>
+            <ul>
+              <li>Executed live interest rate and cross-currency hedging trades for private equity portfolio companies, using swaps, caps, and cross-currency hedges.</li>
+              <li>Modeled cash flow impacts, scenario analyses, and value-at-risk metrics to size and time hedges.</li>
+            </ul>
+          </div>
+        </article>
+        <article class="entry">
+          <div class="when">2012 to 2013</div>
+          <div>
+            <h3>Analyst, Capital Markets</h3>
+            <div class="org">Societe Generale Corporate and Investment Banking, New York</div>
+            <ul>
+              <li>Worked on the US trading floor with the Client Management team.</li>
+              <li>Led technology, legal, and credit onboarding for all new US trading partners, and implemented a new global onboarding process.</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="finance">
+    <div class="wrap">
+      <div class="rail"><h2>Finance background</h2><p>From the trading floor to cloud economics.</p></div>
+      <div class="stack">
+        <p>I started in capital markets at Societe Generale, then hedged interest rate and currency risk for private equity clients at PMC Treasury. That training still shapes how I work: every cloud contract, vendor choice, and architecture decision is a financial decision too.</p>
+        <div class="areas">
+          <div class="area"><h3>Capital markets and risk</h3><p>Interest rate and cross-currency hedging, cash flow modeling, scenario analysis, and value at risk.</p></div>
+          <div class="area"><h3>Cloud economics and FinOps</h3><p>Global cloud spend, optimization, and governance across AWS, Azure, GCP, and Oracle.</p></div>
+          <div class="area"><h3>Sourcing and commercial strategy</h3><p>Multi-year vendor negotiations on nine-figure spend, with eight-figure savings.</p></div>
+          <div class="area"><h3>Pricing and unit economics</h3><p>Models that informed startup fundraising and go-to-market strategy.</p></div>
+        </div>
+        <p>Certifications: Bloomberg Certified (Bloomberg Professional), Cloud Computing Solutions Architecture and Management (GCP, AWS, Azure), and Becoming Head of Sales: Developing Your Playbook.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="education">
+    <div class="wrap">
+      <div class="rail"><h2>Education</h2></div>
+      <div class="entries">
+        <article class="entry">
+          <div class="when">MBA</div>
+          <div>
+            <h3>Leadership, Finance &amp; Technology Management</h3>
+            <div class="org">University of Notre Dame, Mendoza College of Business</div>
+          </div>
+        </article>
+        <article class="entry">
+          <div class="when">Bachelor's</div>
+          <div>
+            <h3>Finance &amp; International Business</h3>
+            <div class="org">Saint Joseph's University, Erivan K. Haub School of Business</div>
+          </div>
+        </article>
+        <article class="entry">
+          <div class="when">Continued studies</div>
+          <div>
+            <h3>International Political Economy</h3>
+            <div class="org">London School of Economics and Political Science</div>
+          </div>
+        </article>
+        <article class="entry">
+          <div class="when">Continued studies</div>
+          <div>
+            <h3>Cloud Computing, Technical Program Management</h3>
+            <div class="org">The University of Texas at Austin</div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="giving">
+    <div class="wrap">
+      <div class="rail"><h2>Giving back</h2><p>Mental health and children's causes.</p></div>
+      <div class="stack">
+        <p>I'm passionate about breaking down stigma around mental health, creating a safe space, and providing better access to care for all. Through E|Motion Ventures I build, invest in, and advise firms doing that work.</p>
+        <p>I'm also a mentor and an active supporter of organizations that help young people.</p>
+        <div class="areas">
+          <div class="area"><div class="where">San Francisco Bay Area</div><h3>The Guardsmen</h3><p>Committee chair and donor. Supports at-risk youth.</p></div>
+          <div class="area"><div class="where">Chicago</div><h3>Beat the Streets</h3><p>Supporter of its work with young people.</p></div>
+          <div class="area"><div class="where">New York</div><h3>Teak Foundation</h3><p>Supporter of its work for children.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="writing">
+    <div class="wrap">
+      <div class="rail"><h2>Writing</h2></div>
+      <ul class="plain">
+        <li>AI, Automation, and the Future of IT</li>
+        <li>Taking the Personal Finance Conversation Home</li>
+        <li>Socially Awkward: Branding Socially in the Age of Digital</li>
+        <li>Fantastic Millennials and Where to Find Them</li>
+        <li>It's the Most Wonderful Time of the Year (for Online Sales): 5 Ways to Stand Out Amongst the Holiday eCompetition</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section contact" id="contact">
+    <div class="wrap">
+      <div class="rail"><h2>Let's talk</h2></div>
+      <div class="stack">
+        <p>I'm always happy to hear about a role, a project, or just to say hello.</p>
+        <dl class="contact-list">
+          <div><dt>Email</dt><dd>cal.escue@gmail.com</dd></div>
+          <div><dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/calescue" target="_blank" rel="noopener">linkedin.com/in/calescue</a></dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">© 2026 Cal Escue</div>
+</footer>
